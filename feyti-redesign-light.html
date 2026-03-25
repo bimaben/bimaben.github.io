@@ -1,0 +1,1311 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Feyti Medical Group — AI-Powered Health Innovation for Africa</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --bg:        #f9faf8;
+    --bg2:       #f2f5f0;
+    --surface:   #ffffff;
+    --surface2:  #eef2eb;
+    --border:    #dde5d8;
+    --border2:   #c8d4c0;
+
+    --accent:    #2d7a3a;
+    --accent-lt: #3d9e4e;
+    --accent-bg: #edf7ee;
+    --accent-mid:#c6e8ca;
+
+    --text:      #141a12;
+    --text2:     #3a4536;
+    --muted:     #697566;
+    --muted2:    #a0ac9a;
+
+    --font-display: 'Instrument Serif', serif;
+    --font-body:    'DM Sans', sans-serif;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--font-body);
+    font-size: 16px;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
+
+  /* ── NAV ──────────────────────────────────── */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 48px;
+    height: 64px;
+    background: rgba(249,250,248,0.90);
+    backdrop-filter: blur(16px);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .nav-logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-family: var(--font-display);
+    font-size: 1.2rem;
+    color: var(--text);
+    text-decoration: none;
+    letter-spacing: -0.01em;
+  }
+
+  .logo-mark {
+    width: 30px; height: 30px;
+    background: var(--accent);
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    font-family: var(--font-body);
+    font-weight: 700;
+    font-size: 14px;
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 28px;
+    list-style: none;
+  }
+
+  .nav-links a {
+    color: var(--muted);
+    text-decoration: none;
+    font-size: 0.875rem;
+    font-weight: 400;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--text); }
+
+  .nav-right { display: flex; align-items: center; gap: 12px; }
+
+  .btn-ghost {
+    color: var(--muted);
+    background: none;
+    border: none;
+    font-family: var(--font-body);
+    font-size: 0.875rem;
+    cursor: pointer;
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+  .btn-ghost:hover { color: var(--text); }
+
+  .btn-primary {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: var(--accent);
+    color: #fff;
+    font-family: var(--font-body);
+    font-weight: 600;
+    font-size: 0.875rem;
+    padding: 10px 20px;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+    text-decoration: none;
+    transition: background 0.2s, transform 0.15s;
+    white-space: nowrap;
+  }
+  .btn-primary:hover { background: var(--accent-lt); transform: translateY(-1px); }
+
+  /* ── BANNER ───────────────────────────────── */
+  .banner {
+    background: var(--accent-bg);
+    border-bottom: 1px solid var(--accent-mid);
+    padding: 14px 24px;
+    text-align: center;
+    padding-top: 78px; /* nav offset */
+  }
+
+  .banner-inner {
+    display: inline-flex;
+    align-items: center;
+    gap: 16px;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .banner-tag {
+    font-size: 0.68rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--accent);
+    background: var(--accent-mid);
+    padding: 3px 10px;
+    border-radius: 100px;
+  }
+
+  .banner p { font-size: 0.875rem; color: var(--text2); font-weight: 300; }
+
+  .banner a {
+    color: var(--accent);
+    font-size: 0.875rem;
+    font-weight: 600;
+    text-decoration: none;
+  }
+  .banner a:hover { color: var(--accent-lt); }
+
+  /* ── HERO ─────────────────────────────────── */
+  .hero {
+    min-height: 92vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 80px 24px 80px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  /* soft green radial glow */
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: -100px; left: 50%;
+    transform: translateX(-50%);
+    width: 900px; height: 600px;
+    background: radial-gradient(ellipse at center, rgba(45,122,58,0.07) 0%, transparent 68%);
+    pointer-events: none;
+  }
+
+  /* subtle dot-grid texture */
+  .hero::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: radial-gradient(var(--border) 1px, transparent 1px);
+    background-size: 28px 28px;
+    pointer-events: none;
+    opacity: 0.55;
+    mask-image: radial-gradient(ellipse 80% 70% at 50% 50%, black, transparent);
+  }
+
+  .hero-badge {
+    position: relative;
+    z-index: 1;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    border: 1px solid var(--accent-mid);
+    background: var(--accent-bg);
+    color: var(--accent);
+    font-size: 0.75rem;
+    font-weight: 600;
+    padding: 6px 14px;
+    border-radius: 100px;
+    margin-bottom: 32px;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+  }
+
+  .hero-badge .dot {
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: var(--accent);
+    animation: pulse 2s ease-in-out infinite;
+  }
+
+  @keyframes pulse {
+    0%,100% { opacity:1; transform:scale(1); }
+    50% { opacity:0.35; transform:scale(0.75); }
+  }
+
+  .hero h1 {
+    position: relative; z-index: 1;
+    font-family: var(--font-display);
+    font-size: clamp(2.8rem, 6.5vw, 5.8rem);
+    font-weight: 400;
+    line-height: 1.06;
+    letter-spacing: -0.025em;
+    max-width: 860px;
+    margin-bottom: 24px;
+    color: var(--text);
+  }
+
+  .hero h1 em {
+    font-style: italic;
+    color: var(--accent);
+  }
+
+  .hero-sub {
+    position: relative; z-index: 1;
+    font-size: 1.1rem;
+    color: var(--muted);
+    max-width: 520px;
+    line-height: 1.7;
+    margin-bottom: 44px;
+    font-weight: 300;
+  }
+
+  .hero-ctas {
+    position: relative; z-index: 1;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    justify-content: center;
+  }
+
+  .btn-primary-lg {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--accent);
+    color: #fff;
+    font-family: var(--font-body);
+    font-weight: 600;
+    font-size: 0.95rem;
+    padding: 14px 28px;
+    border-radius: 10px;
+    border: none;
+    cursor: pointer;
+    text-decoration: none;
+    transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
+  }
+  .btn-primary-lg:hover {
+    background: var(--accent-lt);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 28px rgba(45,122,58,0.22);
+  }
+
+  .btn-outline-lg {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: transparent;
+    color: var(--text2);
+    font-family: var(--font-body);
+    font-weight: 500;
+    font-size: 0.95rem;
+    padding: 14px 28px;
+    border-radius: 10px;
+    border: 1.5px solid var(--border2);
+    cursor: pointer;
+    text-decoration: none;
+    transition: border-color 0.2s, color 0.2s, background 0.2s;
+  }
+  .btn-outline-lg:hover { border-color: var(--accent); color: var(--accent); background: var(--accent-bg); }
+
+  .hero-note {
+    position: relative; z-index: 1;
+    margin-top: 24px;
+    font-size: 0.78rem;
+    color: var(--muted2);
+  }
+
+  /* ── TRUST TICKER ─────────────────────────── */
+  .trust-section {
+    padding: 52px 0;
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+    background: var(--surface);
+    overflow: hidden;
+  }
+
+  .trust-label {
+    text-align: center;
+    font-size: 0.7rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    color: var(--muted2);
+    margin-bottom: 28px;
+  }
+
+  .ticker-wrap {
+    overflow: hidden;
+    mask-image: linear-gradient(to right, transparent, black 12%, black 88%, transparent);
+  }
+
+  .ticker-track {
+    display: flex;
+    gap: 52px;
+    animation: ticker 30s linear infinite;
+    white-space: nowrap;
+  }
+
+  @keyframes ticker {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+  }
+
+  .trust-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: var(--muted);
+    flex-shrink: 0;
+  }
+
+  .trust-item .sep {
+    width: 3px; height: 3px;
+    border-radius: 50%;
+    background: var(--muted2);
+    opacity: 0.5;
+  }
+
+  /* ── COMMON ───────────────────────────────── */
+  section { padding: 100px 24px; }
+  .container { max-width: 1100px; margin: 0 auto; }
+
+  .section-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 0.7rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--accent);
+    margin-bottom: 14px;
+  }
+
+  .section-title {
+    font-family: var(--font-display);
+    font-size: clamp(1.9rem, 3.8vw, 3.1rem);
+    font-weight: 400;
+    letter-spacing: -0.022em;
+    line-height: 1.1;
+    margin-bottom: 18px;
+    color: var(--text);
+  }
+
+  .section-sub {
+    font-size: 1rem;
+    color: var(--muted);
+    max-width: 560px;
+    line-height: 1.7;
+    font-weight: 300;
+  }
+
+  /* ── STAT ROW ─────────────────────────────── */
+  .stat-row {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1px;
+    background: var(--border);
+    border: 1.5px solid var(--border);
+    border-radius: 18px;
+    overflow: hidden;
+    margin-top: 56px;
+  }
+
+  .stat-cell {
+    background: var(--surface);
+    padding: 44px 36px;
+    text-align: center;
+    transition: background 0.2s;
+  }
+  .stat-cell:hover { background: var(--accent-bg); }
+
+  .stat-value {
+    font-family: var(--font-display);
+    font-size: 3.4rem;
+    font-weight: 400;
+    color: var(--accent);
+    letter-spacing: -0.025em;
+    line-height: 1;
+    margin-bottom: 8px;
+  }
+
+  .stat-label {
+    font-size: 0.875rem;
+    color: var(--muted);
+    font-weight: 300;
+    line-height: 1.5;
+  }
+
+  /* ── SERVICES GRID ────────────────────────── */
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1px;
+    background: var(--border);
+    border: 1.5px solid var(--border);
+    border-radius: 18px;
+    overflow: hidden;
+    margin-top: 52px;
+  }
+
+  .service-card {
+    background: var(--surface);
+    padding: 36px 30px;
+    transition: background 0.2s;
+  }
+  .service-card:hover { background: var(--accent-bg); }
+
+  .service-icon {
+    width: 44px; height: 44px;
+    background: var(--accent-bg);
+    border: 1.5px solid var(--accent-mid);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+    margin-bottom: 18px;
+  }
+
+  .service-card h3 {
+    font-size: 0.975rem;
+    font-weight: 600;
+    margin-bottom: 10px;
+    color: var(--text);
+    letter-spacing: -0.01em;
+  }
+
+  .service-card p {
+    font-size: 0.875rem;
+    color: var(--muted);
+    line-height: 1.65;
+    font-weight: 300;
+  }
+
+  .powered-by {
+    margin-top: 18px;
+    padding-top: 14px;
+    border-top: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    flex-wrap: wrap;
+  }
+
+  .powered-by span.label {
+    font-size: 0.68rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--muted2);
+  }
+
+  .ai-chip {
+    font-size: 0.7rem;
+    font-weight: 600;
+    background: var(--surface2);
+    border: 1px solid var(--border2);
+    color: var(--muted);
+    padding: 2px 8px;
+    border-radius: 5px;
+  }
+
+  /* ── BADGES ───────────────────────────────── */
+  .badges-row {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin-top: 40px;
+  }
+
+  .badge-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    border: 1.5px solid var(--accent-mid);
+    background: var(--accent-bg);
+    border-radius: 100px;
+    padding: 7px 16px;
+    font-size: 0.78rem;
+    font-weight: 500;
+    color: var(--accent);
+  }
+
+  .badge-pill .dot {
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: var(--accent);
+    opacity: 0.7;
+  }
+
+  /* ── TESTIMONIAL ──────────────────────────── */
+  .testimonial-section {
+    background: var(--accent);
+    padding: 100px 24px;
+  }
+
+  .testimonial-card {
+    max-width: 720px;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  .testimonial-quote {
+    font-family: var(--font-display);
+    font-size: clamp(1.4rem, 2.8vw, 2.1rem);
+    font-weight: 400;
+    font-style: italic;
+    line-height: 1.45;
+    color: #fff;
+    margin-bottom: 32px;
+    letter-spacing: -0.01em;
+  }
+
+  .testimonial-author {
+    font-size: 0.875rem;
+    color: rgba(255,255,255,0.65);
+  }
+  .testimonial-author strong { color: #fff; font-weight: 600; }
+
+  /* ── WHY FEYTI ────────────────────────────── */
+  .why-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1px;
+    background: var(--border);
+    border: 1.5px solid var(--border);
+    border-radius: 18px;
+    overflow: hidden;
+    margin-top: 52px;
+  }
+
+  .why-card {
+    background: var(--surface);
+    padding: 36px 30px;
+    transition: background 0.2s;
+  }
+  .why-card:hover { background: var(--accent-bg); }
+
+  .why-icon {
+    font-size: 1.6rem;
+    margin-bottom: 14px;
+    display: block;
+  }
+
+  .why-card h3 {
+    font-size: 0.975rem;
+    font-weight: 600;
+    margin-bottom: 10px;
+    color: var(--text);
+  }
+
+  .why-card p {
+    font-size: 0.875rem;
+    color: var(--muted);
+    line-height: 1.65;
+    font-weight: 300;
+  }
+
+  /* ── MARKETS ──────────────────────────────── */
+  .markets-layout {
+    display: grid;
+    grid-template-columns: 1fr 1.4fr;
+    gap: 56px;
+    align-items: start;
+    margin-top: 52px;
+  }
+
+  .market-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 20px;
+  }
+
+  .market-tag {
+    font-size: 0.825rem;
+    font-weight: 500;
+    background: var(--surface);
+    border: 1.5px solid var(--border);
+    color: var(--text2);
+    padding: 7px 14px;
+    border-radius: 8px;
+    transition: border-color 0.2s, color 0.2s, background 0.2s;
+    cursor: default;
+  }
+  .market-tag:hover { border-color: var(--accent); color: var(--accent); background: var(--accent-bg); }
+
+  .partners-box {
+    background: var(--surface);
+    border: 1.5px solid var(--border);
+    border-radius: 18px;
+    padding: 36px;
+  }
+
+  .partners-box h4 {
+    font-size: 0.7rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--muted2);
+    margin-bottom: 20px;
+  }
+
+  .partner-list { display: flex; flex-direction: column; gap: 11px; }
+
+  .partner-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 0.875rem;
+    color: var(--muted);
+    font-weight: 300;
+  }
+
+  .partner-dot {
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: var(--accent-mid);
+    flex-shrink: 0;
+  }
+
+  .divider {
+    margin: 20px 0;
+    border: none;
+    border-top: 1px solid var(--border);
+  }
+
+  /* ── FAQ ──────────────────────────────────── */
+  .faq-list {
+    margin-top: 48px;
+    border: 1.5px solid var(--border);
+    border-radius: 18px;
+    overflow: hidden;
+    max-width: 740px;
+  }
+
+  .faq-item { border-bottom: 1px solid var(--border); }
+  .faq-item:last-child { border-bottom: none; }
+
+  .faq-question {
+    width: 100%;
+    background: var(--surface);
+    border: none;
+    color: var(--text);
+    font-family: var(--font-body);
+    font-size: 0.95rem;
+    font-weight: 500;
+    text-align: left;
+    padding: 22px 28px;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+    transition: background 0.2s;
+  }
+  .faq-question:hover { background: var(--accent-bg); }
+
+  .faq-chevron {
+    font-size: 1.25rem;
+    color: var(--accent);
+    transition: transform 0.25s;
+    font-weight: 300;
+    flex-shrink: 0;
+  }
+  .faq-item.open .faq-chevron { transform: rotate(45deg); }
+
+  .faq-answer { overflow: hidden; max-height: 0; transition: max-height 0.3s ease; }
+  .faq-item.open .faq-answer { max-height: 160px; }
+
+  .faq-answer-inner {
+    padding: 0 28px 22px;
+    color: var(--muted);
+    font-size: 0.9rem;
+    line-height: 1.75;
+    font-weight: 300;
+    background: var(--surface);
+  }
+
+  /* ── CTA ──────────────────────────────────── */
+  .cta-section {
+    background: var(--bg2);
+    border-top: 1px solid var(--border);
+    padding: 120px 24px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .cta-section::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: radial-gradient(var(--border) 1px, transparent 1px);
+    background-size: 28px 28px;
+    pointer-events: none;
+    opacity: 0.7;
+    mask-image: radial-gradient(ellipse 80% 70% at 50% 50%, black, transparent);
+  }
+
+  .cta-inner { position: relative; z-index: 1; }
+
+  .cta-section .section-title { max-width: 640px; margin: 0 auto 18px; }
+  .cta-section .section-sub { margin: 0 auto 44px; }
+
+  /* newsletter */
+  .newsletter-row {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    max-width: 420px;
+    margin: 0 auto;
+    flex-wrap: wrap;
+  }
+
+  .newsletter-input {
+    flex: 1;
+    min-width: 200px;
+    background: var(--surface);
+    border: 1.5px solid var(--border2);
+    border-radius: 10px;
+    color: var(--text);
+    font-family: var(--font-body);
+    font-size: 0.9rem;
+    padding: 13px 18px;
+    outline: none;
+    transition: border-color 0.2s, box-shadow 0.2s;
+  }
+  .newsletter-input:focus { border-color: var(--accent); box-shadow: 0 0 0 3px rgba(45,122,58,0.12); }
+  .newsletter-input::placeholder { color: var(--muted2); }
+
+  /* ── FOOTER ───────────────────────────────── */
+  footer {
+    background: var(--text);
+    padding: 60px 48px 36px;
+  }
+
+  .footer-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1.6fr 1fr 1fr 1fr;
+    gap: 48px;
+  }
+
+  .footer-logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-family: var(--font-display);
+    font-size: 1.15rem;
+    color: #fff;
+    text-decoration: none;
+  }
+
+  .footer-logo .logo-mark {
+    background: var(--accent);
+  }
+
+  .footer-brand p {
+    color: rgba(255,255,255,0.45);
+    font-size: 0.875rem;
+    line-height: 1.65;
+    margin-top: 14px;
+    font-weight: 300;
+    max-width: 260px;
+  }
+
+  .footer-offices { margin-top: 20px; display: flex; flex-direction: column; gap: 10px; }
+
+  .footer-office {
+    font-size: 0.78rem;
+    color: rgba(255,255,255,0.35);
+    line-height: 1.5;
+  }
+
+  .footer-office strong {
+    color: rgba(255,255,255,0.6);
+    font-weight: 600;
+    display: block;
+    margin-bottom: 2px;
+  }
+
+  .footer-col h4 {
+    font-size: 0.7rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: rgba(255,255,255,0.35);
+    margin-bottom: 16px;
+  }
+
+  .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+
+  .footer-col a {
+    color: rgba(255,255,255,0.55);
+    font-size: 0.875rem;
+    text-decoration: none;
+    font-weight: 300;
+    transition: color 0.2s;
+  }
+  .footer-col a:hover { color: #fff; }
+
+  .social-row { display: flex; gap: 8px; margin-top: 20px; }
+
+  .social-btn {
+    width: 32px; height: 32px;
+    background: rgba(255,255,255,0.07);
+    border: 1px solid rgba(255,255,255,0.12);
+    border-radius: 7px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: rgba(255,255,255,0.5);
+    font-size: 0.8rem;
+    text-decoration: none;
+    transition: background 0.2s, color 0.2s, border-color 0.2s;
+  }
+  .social-btn:hover { background: var(--accent); color: #fff; border-color: var(--accent); }
+
+  .footer-bottom {
+    max-width: 1100px;
+    margin: 40px auto 0;
+    padding-top: 24px;
+    border-top: 1px solid rgba(255,255,255,0.08);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.78rem;
+    color: rgba(255,255,255,0.3);
+  }
+
+  .footer-bottom a { color: rgba(255,255,255,0.3); text-decoration: none; transition: color 0.2s; }
+  .footer-bottom a:hover { color: rgba(255,255,255,0.6); }
+
+  /* ── ANIMATIONS ───────────────────────────── */
+  @keyframes fadeUp {
+    from { opacity:0; transform:translateY(20px); }
+    to { opacity:1; transform:translateY(0); }
+  }
+  .fade-up { animation: fadeUp 0.6s ease both; }
+  .d1 { animation-delay: 0.1s; }
+  .d2 { animation-delay: 0.22s; }
+  .d3 { animation-delay: 0.36s; }
+  .d4 { animation-delay: 0.5s; }
+
+  /* ── RESPONSIVE ───────────────────────────── */
+  @media (max-width: 860px) {
+    nav { padding: 0 20px; }
+    .nav-links { display: none; }
+    .services-grid, .stat-row, .why-grid { grid-template-columns: 1fr; }
+    .markets-layout { grid-template-columns: 1fr; }
+    .footer-inner { grid-template-columns: 1fr 1fr; gap: 32px; }
+    .footer-bottom { flex-direction: column; gap: 8px; text-align: center; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-logo">
+    <div class="logo-mark">F</div>
+    Feyti Medical Group
+  </a>
+  <ul class="nav-links">
+    <li><a href="#services">Services</a></li>
+    <li><a href="#impact">Impact</a></li>
+    <li><a href="#markets">Markets</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#faq">FAQ</a></li>
+  </ul>
+  <div class="nav-right">
+    <a href="https://feytimedicalgroup.com/contact.html" class="btn-ghost">Contact</a>
+    <a href="https://app.aicyclinder.com/" class="btn-primary">Try AIcyclinder →</a>
+  </div>
+</nav>
+
+<!-- EARLY ACCESS BANNER -->
+<div class="banner">
+  <div class="banner-inner">
+    <span class="banner-tag">🚀 Early Trials</span>
+    <p>AIcyclinder — our AI platform for pharmacovigilance &amp; regulatory workflows — is now in early access.</p>
+    <a href="https://app.aicyclinder.com/">Access early trial →</a>
+  </div>
+</div>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-badge fade-up">
+    <span class="dot"></span>
+    Built in Africa &nbsp;·&nbsp; Designed for Global Health
+  </div>
+  <h1 class="fade-up d1">
+    AI-powered health<br />innovation for <em>Africa<br />and beyond.</em>
+  </h1>
+  <p class="hero-sub fade-up d2">
+    Feyti transforms healthcare compliance, pharmacovigilance, and clinical research across Africa through automation, data, and intelligence.
+  </p>
+  <div class="hero-ctas fade-up d3">
+    <a href="https://feytimedicalgroup.com/contact.html" class="btn-primary-lg">Request a consultation →</a>
+    <a href="https://feytimedicalgroup.com/services.html" class="btn-outline-lg">Explore our platform</a>
+  </div>
+  <p class="hero-note fade-up d4">100M+ lives impacted &nbsp;·&nbsp; Operating across 12 countries &nbsp;·&nbsp; Female-led leadership</p>
+</section>
+
+<!-- TRUST TICKER -->
+<div class="trust-section">
+  <p class="trust-label">Trusted by leading healthcare &amp; government partners</p>
+  <div class="ticker-wrap">
+    <div class="ticker-track">
+      <div class="trust-item"><span class="sep"></span>MTN</div>
+      <div class="trust-item"><span class="sep"></span>Cipla</div>
+      <div class="trust-item"><span class="sep"></span>Outbox</div>
+      <div class="trust-item"><span class="sep"></span>ITC</div>
+      <div class="trust-item"><span class="sep"></span>Venture Well</div>
+      <div class="trust-item"><span class="sep"></span>National Drug Authority Uganda</div>
+      <div class="trust-item"><span class="sep"></span>Ministry of Health</div>
+      <div class="trust-item"><span class="sep"></span>OpenAI</div>
+      <div class="trust-item"><span class="sep"></span>DeepMind</div>
+      <div class="trust-item"><span class="sep"></span>Ministry of ICT Uganda</div>
+      <!-- duplicate for seamless loop -->
+      <div class="trust-item"><span class="sep"></span>MTN</div>
+      <div class="trust-item"><span class="sep"></span>Cipla</div>
+      <div class="trust-item"><span class="sep"></span>Outbox</div>
+      <div class="trust-item"><span class="sep"></span>ITC</div>
+      <div class="trust-item"><span class="sep"></span>Venture Well</div>
+      <div class="trust-item"><span class="sep"></span>National Drug Authority Uganda</div>
+      <div class="trust-item"><span class="sep"></span>Ministry of Health</div>
+      <div class="trust-item"><span class="sep"></span>OpenAI</div>
+      <div class="trust-item"><span class="sep"></span>DeepMind</div>
+      <div class="trust-item"><span class="sep"></span>Ministry of ICT Uganda</div>
+    </div>
+  </div>
+</div>
+
+<!-- STATS -->
+<section style="padding: 80px 24px; background: var(--surface);" id="impact">
+  <div class="container">
+    <div class="stat-row">
+      <div class="stat-cell">
+        <div class="stat-value">100M+</div>
+        <div class="stat-label">Lives impacted across Africa</div>
+      </div>
+      <div class="stat-cell">
+        <div class="stat-value">80+</div>
+        <div class="stat-label">Regulatory dossiers automated</div>
+      </div>
+      <div class="stat-cell">
+        <div class="stat-value">60%</div>
+        <div class="stat-label">Reduction in dossier preparation time</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section id="services" style="padding: 100px 24px;">
+  <div class="container">
+    <div class="section-tag">— Our platform</div>
+    <h2 class="section-title">Smarter systems.<br /><em>Safer healthcare.</em></h2>
+    <p class="section-sub">AI-powered solutions transforming healthcare regulation and research across Africa and global markets.</p>
+
+    <div class="services-grid">
+      <div class="service-card">
+        <div class="service-icon">📋</div>
+        <h3>Regulatory Dossier Automation</h3>
+        <p>AI-powered eCTD preparation and submission management. Reduce dossier prep time by 60% while maintaining full compliance.</p>
+        <div class="powered-by">
+          <span class="label">Powered by:</span>
+          <span class="ai-chip">Gemini</span>
+          <span class="ai-chip">OpenAI</span>
+        </div>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">🔬</div>
+        <h3>Safety Signal Detection</h3>
+        <p>Automated pharmacovigilance reporting and PV signal management across multiple countries simultaneously.</p>
+        <div class="powered-by">
+          <span class="label">Powered by:</span>
+          <span class="ai-chip">Llama</span>
+          <span class="ai-chip">OpenAI</span>
+        </div>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">🌍</div>
+        <h3>Multi-country Compliance</h3>
+        <p>Automated compliance monitoring across all African markets — localized PV operations in 6 countries and growing.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">📊</div>
+        <h3>Observational Study Automation</h3>
+        <p>AI-driven data collection and analysis for real-world evidence, reducing manual work and improving data quality.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">✍️</div>
+        <h3>AI Medical Writing</h3>
+        <p>Automated medical document review and AI-powered regulatory writing — accurate, consistent, and audit-ready.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">🤖</div>
+        <h3>AI Agent Integrations</h3>
+        <p>Intelligent document review and health data processing via our AIcyclinder platform, purpose-built for pharma workflows.</p>
+        <div class="powered-by">
+          <span class="label">Platform:</span>
+          <span class="ai-chip">AIcyclinder</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="badges-row">
+      <div class="badge-pill"><span class="dot"></span> ISO-Certified Compliance</div>
+      <div class="badge-pill"><span class="dot"></span> NITA Certified</div>
+      <div class="badge-pill"><span class="dot"></span> Data Protection Compliant</div>
+      <div class="badge-pill"><span class="dot"></span> Localized PV in 6 Countries</div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIAL (green bg) -->
+<div class="testimonial-section">
+  <div class="testimonial-card">
+    <p class="testimonial-quote">"Feyti Medical Group's expertise in clinical research and regulatory affairs helped us launch our product faster and with confidence."</p>
+    <p class="testimonial-author"><strong>Dr. Jane</strong> — Pharma CEO</p>
+  </div>
+</div>
+
+<!-- WHY FEYTI -->
+<section id="about" style="padding: 100px 24px; background: var(--surface);">
+  <div class="container">
+    <div class="section-tag">— Why Feyti</div>
+    <h2 class="section-title">Built different.<br /><em>From the ground up.</em></h2>
+    <p class="section-sub">A pan-African team with global partnerships — enabling pharma companies to scale safely and smartly.</p>
+
+    <div class="why-grid">
+      <div class="why-card">
+        <span class="why-icon">🔐</span>
+        <h3>Certified by NITA &amp; Data Protection Authorities</h3>
+        <p>Meeting the highest standards for data security, privacy, and compliance across every market we operate in.</p>
+      </div>
+      <div class="why-card">
+        <span class="why-icon">🌐</span>
+        <h3>Cross-continental Expert Team</h3>
+        <p>Medical, AI, and policy experts spanning multiple continents — deep local knowledge with global reach.</p>
+      </div>
+      <div class="why-card">
+        <span class="why-icon">👩‍💼</span>
+        <h3>Female-led Leadership</h3>
+        <p>60% of our leadership positions are held by women — diverse perspectives driving better healthcare outcomes.</p>
+      </div>
+      <div class="why-card">
+        <span class="why-icon">⚖️</span>
+        <h3>Ethical AI Commitment</h3>
+        <p>Local-first, ethical, and explainable AI solutions. We build for compliance — and for trust.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MARKETS -->
+<section id="markets" style="padding: 100px 24px;">
+  <div class="container">
+    <div class="section-tag">— Where we work</div>
+    <h2 class="section-title">Operating across Africa<br /><em>and beyond.</em></h2>
+    <p class="section-sub">Deep roots in African markets with a growing international presence across 12 countries.</p>
+
+    <div class="markets-layout">
+      <div>
+        <p style="font-size: 0.7rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.12em; color: var(--muted2); margin-bottom: 14px;">Current markets</p>
+        <div class="market-tags">
+          <span class="market-tag">🇺🇬 Uganda</span>
+          <span class="market-tag">🇰🇪 Kenya</span>
+          <span class="market-tag">🇹🇿 Tanzania</span>
+          <span class="market-tag">🇬🇭 Ghana</span>
+          <span class="market-tag">🇨🇩 DRC</span>
+          <span class="market-tag">🇷🇼 Rwanda</span>
+          <span class="market-tag">🇧🇼 Botswana</span>
+          <span class="market-tag">🇿🇦 South Africa</span>
+          <span class="market-tag">🇳🇬 Nigeria</span>
+          <span class="market-tag">🇪🇹 Ethiopia</span>
+          <span class="market-tag">🇨🇦 Canada</span>
+          <span class="market-tag">🇺🇸 USA</span>
+        </div>
+      </div>
+
+      <div class="partners-box">
+        <h4>Clients &amp; Partners</h4>
+        <div class="partner-list">
+          <div class="partner-item"><span class="partner-dot"></span>MTN</div>
+          <div class="partner-item"><span class="partner-dot"></span>Cipla</div>
+          <div class="partner-item"><span class="partner-dot"></span>Outbox</div>
+          <div class="partner-item"><span class="partner-dot"></span>International Trade Centre (ITC)</div>
+          <div class="partner-item"><span class="partner-dot"></span>Venture Well</div>
+        </div>
+        <hr class="divider" />
+        <h4>Government Partners</h4>
+        <div class="partner-list">
+          <div class="partner-item"><span class="partner-dot"></span>National Drug Authority, Uganda</div>
+          <div class="partner-item"><span class="partner-dot"></span>Ministry of ICT Uganda</div>
+          <div class="partner-item"><span class="partner-dot"></span>Ministry of Science and Technology</div>
+          <div class="partner-item"><span class="partner-dot"></span>Ministry of Health</div>
+        </div>
+        <hr class="divider" />
+        <h4>AI Research Partners</h4>
+        <div class="partner-list">
+          <div class="partner-item"><span class="partner-dot"></span>OpenAI</div>
+          <div class="partner-item"><span class="partner-dot"></span>DeepMind</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section id="faq" style="background: var(--surface); padding: 100px 24px; border-top: 1px solid var(--border);">
+  <div class="container">
+    <div class="section-tag">— FAQ</div>
+    <h2 class="section-title">Common questions.</h2>
+
+    <div class="faq-list">
+      <div class="faq-item open">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          What is AIcyclinder?
+          <span class="faq-chevron">+</span>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">AIcyclinder is Feyti's proprietary AI platform for automating pharmacovigilance, regulatory dossiers, and compliance workflows. It's currently in early access trials — join the waitlist to be among the first to use it.</div>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          Which countries do you operate in?
+          <span class="faq-chevron">+</span>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">We currently operate across Uganda, Kenya, Tanzania, Ghana, DRC, Rwanda, Botswana, South Africa, Nigeria, Ethiopia, Canada, and the USA — with expansion plans for 2025–2026.</div>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          How does Feyti ensure data security?
+          <span class="faq-chevron">+</span>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">We are certified by NITA and Data Protection Authorities, and operate ISO-certified compliance systems. All data is handled with strict security protocols that meet or exceed regional regulatory requirements.</div>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          Can you integrate with our existing systems?
+          <span class="faq-chevron">+</span>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">Yes. We build custom integrations tailored to your existing regulatory, clinical, and compliance systems. Our team works closely with you to ensure AIcyclinder fits seamlessly into your current workflows.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA + NEWSLETTER -->
+<section class="cta-section">
+  <div class="cta-inner container">
+    <div class="section-tag" style="justify-content: center;">— Get started</div>
+    <h2 class="section-title">Ready to transform<br /><em>healthcare in Africa?</em></h2>
+    <p class="section-sub" style="margin: 0 auto 44px;">Partner with Feyti to bring AI-powered pharmacovigilance, regulatory automation, and clinical research to your organisation.</p>
+
+    <div class="hero-ctas" style="margin-bottom: 48px;">
+      <a href="https://feytimedicalgroup.com/contact.html" class="btn-primary-lg">Request a consultation →</a>
+      <a href="https://app.aicyclinder.com/" class="btn-outline-lg">Try AIcyclinder</a>
+    </div>
+
+    <p style="font-size: 0.78rem; color: var(--muted2); margin-bottom: 14px;">Subscribe for updates in clinical research, drug safety &amp; AI in healthcare.</p>
+    <div class="newsletter-row">
+      <input type="email" class="newsletter-input" placeholder="Enter your email" />
+      <a href="#" class="btn-primary-lg" style="white-space: nowrap; padding: 13px 22px;">Subscribe</a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <a href="#" class="footer-logo">
+        <div class="logo-mark">F</div>
+        Feyti Medical Group
+      </a>
+      <p>Accelerating access to safe, effective medicine through AI-powered regulation, research, and reporting.</p>
+      <div class="footer-offices">
+        <div class="footer-office">
+          <strong>Uganda HQ</strong>
+          Plot 132, Spring Rd, Kampala, Uganda
+        </div>
+        <div class="footer-office">
+          <strong>USA Office</strong>
+          1111B S Governors Ave STE 21329, Dover, DE 19904
+        </div>
+      </div>
+      <div class="social-row">
+        <a href="https://x.com/feytigroup" class="social-btn" title="X">𝕏</a>
+        <a href="https://www.facebook.com/Feyti256" class="social-btn" title="Facebook">f</a>
+        <a href="https://www.linkedin.com/company/feytimedicalgroup/" class="social-btn" title="LinkedIn">in</a>
+        <a href="https://www.instagram.com/feytimedicalgroup/" class="social-btn" title="Instagram">ig</a>
+        <a href="https://www.youtube.com/@FeytiMedicalGroup/videos" class="social-btn" title="YouTube">▶</a>
+      </div>
+    </div>
+
+    <div class="footer-col">
+      <h4>Platform</h4>
+      <ul>
+        <li><a href="https://feytimedicalgroup.com/services.html">Services</a></li>
+        <li><a href="https://app.aicyclinder.com/">AIcyclinder</a></li>
+        <li><a href="https://feytimedicalgroup.com/about.html">About</a></li>
+        <li><a href="https://feytimedicalgroup.com/newsletter.html">Newsletter</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-col">
+      <h4>Resources</h4>
+      <ul>
+        <li><a href="https://feytimedicalgroup.medium.com/">Blog</a></li>
+        <li><a href="https://feytimedicalgroup.com/faq.html">FAQs</a></li>
+        <li><a href="https://feytimedicalgroup.com/career.html">Careers</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-col">
+      <h4>Contact</h4>
+      <ul>
+        <li><a href="https://feytimedicalgroup.com/contact.html">Request Consultation</a></li>
+        <li><a href="https://feytimedicalgroup.com/about.html">Partner with Us</a></li>
+        <li><a href="https://app.aicyclinder.com/">Early Access</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="footer-bottom">
+    <span>© 2026 Feyti Medical Group. All rights reserved.</span>
+    <div style="display:flex; gap:20px;">
+      <a href="#">Privacy</a>
+      <a href="#">Terms</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+  function toggleFaq(btn) {
+    const item = btn.closest('.faq-item');
+    const wasOpen = item.classList.contains('open');
+    document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+    if (!wasOpen) item.classList.add('open');
+  }
+</script>
+</body>
+</html>
